@@ -50,7 +50,7 @@ const config = {
 
 const octokit = new Octokit({ auth: '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' });
 const owner = 'MR PROBLÈMATIQUE';
-const repo = 'MINI-INCONNU-XD';
+const repo = 'MINI-PROBL-MATIQUE-MD';
 
 const activeSockets = new Map();
 const socketCreationTime = new Map();
