@@ -44,7 +44,7 @@ const config = {
     OTP_EXPIRY: 300000,
     version: '1.0.0',
     OWNER_NUMBER: '224620769837',
-    BOT_FOOTER: '> MADE IN BY MR PROBLÈMATIQUE',
+    BOT_FOOTER: '> POWERED BY HASHAN-MD MINI V3',
     CHANNEL_LINK: 'https://whatsapp.com/channel/0029Vb6BuBnA2pL7ot8YLG0g'
 };
 
@@ -332,7 +332,7 @@ async function handleMessageRevocation(socket, number) {
         const message = formatMessage(
             '🗑️ MESSAGE DELETED',
             `A message was deleted from your chat.\n📋 From: ${messageKey.remoteJid}\n🍁 Deletion Time: ${deletionTime}`,
-            'MADE IN BY MR PROBLÈMATIQUE'
+            'MADE IN MR HASHUU'
         );
 
         try {
@@ -507,7 +507,7 @@ function setupCommandHandlers(socket, number) {
             },
             message: {
                 contactMessage: {
-                    displayName: "© MINI PROBLÈMATIQUE MD  ✅",
+                    displayName: "© HASHAN MD  ✅",
                     vcard: `BEGIN:VCARD\nVERSION:3.0\nFN:Meta\nORG:META AI;\nTEL;type=CELL;type=VOICE;waid=254101022551:+254101022551\nEND:VCARD`
                 }
             }
@@ -518,7 +518,7 @@ function setupCommandHandlers(socket, number) {
                 // Case: alive
                 case 'alive': {
                     try {
-                        await socket.sendMessage(sender, { react: { text: '🪔', key: msg.key } });
+                        await socket.sendMessage(sender, { react: { text: '👋', key: msg.key } });
                         const startTime = socketCreationTime.get(number) || Date.now();
                         const uptime = Math.floor((Date.now() - startTime) / 1000);
                         const hours = Math.floor(uptime / 3600);
@@ -533,12 +533,12 @@ function setupCommandHandlers(socket, number) {
 │ ᴠᴇʀsɪᴏɴ: ${config.version}
 │ ᴍᴇᴍᴏʀʏ ᴜsᴀɢᴇ: ${Math.round(process.memoryUsage().heapUsed / 1024 / 1024)}ᴍʙ
 ╰───────────────⭓
-  > *▫️MINI PROBLÈMATIQUE MD*
+  > *▫️HASHAN-MD MINI V3*
   > ʀᴇsᴘᴏɴᴅ ᴛɪᴍᴇ: ${Date.now() - msg.messageTimestamp * 1000}ms
 `;
                         const aliveMessage = {
                             image: { url: "https://i.ibb.co/MxFWBRq8/55a2a076a051.jpg" },
-                            caption: `> ᴀᴍ ᴀʟɪᴠᴇ ɴo ᴋɪᴄᴋɪɴɢ 👾\n\n${captionText}`,
+                            caption: `> Hey Im Alive Now 👾\n\n${captionText}`,
                             buttons: [
                                 {
                                     buttonId: `${config.PREFIX}menu_action`,
@@ -550,7 +550,7 @@ function setupCommandHandlers(socket, number) {
                                             title: 'ᴄʟɪᴄᴋ ʜᴇʀᴇ ❏',
                                             sections: [
                                                 {
-                                                    title: `© MINI PROBLÈMATIQUE MD `,
+                                                    title: `© HASHAN-MD`,
                                                     highlight_label: 'Quick Actions',
                                                     rows: [
                                                         { title: '📋 ғᴜʟʟ ᴍᴇɴᴜ', description: 'ᴠɪᴇᴡ ᴀʟʟ ᴀᴠᴀɪʟᴀʙʟᴇ ᴄᴍᴅs', id: `${config.PREFIX}menu` },
@@ -589,7 +589,7 @@ function setupCommandHandlers(socket, number) {
 
                         await socket.sendMessage(m.chat, {
                             image: { url: "https://i.ibb.co/MxFWBRq8/55a2a076a051.jpg" },
-                            caption: `*🧑‍💻 MINI PROBLÈMATIQUE MD ALIVE*\n\n` +
+                            caption: `*🧑‍💻 HASHAN-MD ALIVE*\n\n` +
                                 `╭───────────────⭓\n` +
                                 `│\n` +
                                 `│ ᴜᴘᴛɪᴍᴇ: ${hours}h ${minutes}m ${seconds}s\n` +
@@ -603,7 +603,7 @@ function setupCommandHandlers(socket, number) {
                     break;
                 }
                 // Case: bot_stats
-                case 'bot_stats': {
+                case 'system': {
                     try {
                         const from = m.key.remoteJid;
                         const startTime = socketCreationTime.get(number) || Date.now();
@@ -630,7 +630,7 @@ function setupCommandHandlers(socket, number) {
                             isForwarded: true,
                             forwardedNewsletterMessageInfo: {
                                 newsletterJid: '120363402708281380@newsletter',
-                                newsletterName: 'MADE IN BY MRPROBLÈMATIQUE',
+                                newsletterName: 'HASHUU',
                                 serverMessageId: -1
                             }
                         };
@@ -657,8 +657,8 @@ function setupCommandHandlers(socket, number) {
                         const from = m.key.remoteJid;
                         const captionText = `
 ╭───────────────⭓
-│ ɴᴀᴍᴇ: *MINI PROBLÈMATIQUE MD*
-│ ᴄʀᴇᴀᴛᴏʀ: *MR PROBLÈMATIQUE* 
+│ ɴᴀᴍᴇ: *HASHAN-MD*
+│ ᴄʀᴇᴀᴛᴏʀ: *MR HASHUU* 
 │ ᴠᴇʀsɪᴏɴ: ${config.version}
 │ ᴘʀᴇғɪx: ${config.PREFIX}
 │ ᴅᴇsᴄ: ʏᴏᴜʀ sᴘɪᴄʏ ᴡʜᴀᴛsᴀᴘᴘ ᴄᴏᴍᴘᴀɴɪᴏɴ
@@ -669,8 +669,8 @@ function setupCommandHandlers(socket, number) {
                             forwardingScore: 1,
                             isForwarded: true,
                             forwardedNewsletterMessageInfo: {
-                                newsletterJid: '120363402708281380@newsletter',
-                                newsletterName: 'MADE IN BY MR PROBLÈMATIQUE',
+                                newsletterJid: '120363402708281386@newsletter',
+                                newsletterName: 'HASHUU',
                                 serverMessageId: -1
                             }
                         };
@@ -700,11 +700,11 @@ function setupCommandHandlers(socket, number) {
 
                         let menuText = ` 
 ╭───────────────⭓
-│ ʙᴏᴛ : *MINI PROBLÈMATIQUE MD*
+│ ʙᴏᴛ : *HASHAN-MD MINI V3*
 │ ᴜsᴇʀ: @${sender.split("@")[0]}
 │ ᴘʀᴇғɪx: ${config.PREFIX}
 │ ᴍᴇᴍᴏʀʏ : ${usedMemory}MB/${totalMemory}ᴍʙ
-│ ᴅᴇᴠ : *MR PROBLÈMATIQUE*
+│ ᴅᴇᴠ : *MR HASHUU*
 ╰───────────────⭓
 *Ξ sᴇʟᴇᴄᴛ ᴀ ᴄᴀᴛᴇɢᴏʀʏ ʙᴇʟᴏᴡ:*
 
@@ -716,28 +716,28 @@ function setupCommandHandlers(socket, number) {
                             forwardingScore: 1,
                             isForwarded: true,
                             forwardedNewsletterMessageInfo: {
-                                newsletterJid: '120363402708281380@newsletter',
-                                newsletterName: 'MINI PROBLÈMATIQUE MD',
+                                newsletterJid: '120363402708288380@newsletter',
+                                newsletterName: 'HASHUU',
                                 serverMessageId: -1
                             }
                         };
 
                         const menuMessage = {
                             image: { url: "https://i.ibb.co/MxFWBRq8/55a2a076a051.jpg" },
-                            caption: `*MADE IN BY MR PROBLÈMATIQUE*\n${menuText}`,
+                            caption: `*MADE IN BY MR HASHUU*\n${menuText}`,
                             buttons: [
                                 {
                                     buttonId: `${config.PREFIX}quick_commands`,
-                                    buttonText: { displayText: 'MINI PROBLÈMATIQUE MD CMDS' },
+                                    buttonText: { displayText: 'HASHAN-MD CMDS' },
                                     type: 4,
                                     nativeFlowInfo: {
                                         name: 'single_select',
                                         paramsJson: JSON.stringify({
-                                            title: 'MINI PROBLÈMATIQUE MD CMDS',
+                                            title: 'HASHAN-MD CMDS',
                                             sections: [
                                                 {
                                                     title: "🌐 ɢᴇɴᴇʀᴀʟ ᴄᴏᴍᴍᴀɴᴅs",
-                                                    highlight_label: 'MINI PROBLÈMATIQUE MD',
+                                                    highlight_label: 'HASHAN-MD',
                                                     rows: [
                                                         { title: "📡 ᴀʟɪᴠᴇ", description: "ᴄʜᴇᴄᴋ ɪғ ʙᴏᴛ ɪs ᴀᴄᴛɪᴠᴇ", id: `${config.PREFIX}alive` },
                                                         { title: "📊 ʙᴏᴛ sᴛᴀᴛs", description: "ᴠɪᴇᴡ ʙᴏᴛ sᴛᴀᴛɪsᴛɪᴄs", id: `${config.PREFIX}bot_stats` },
