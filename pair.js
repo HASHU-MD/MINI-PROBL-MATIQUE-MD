@@ -38,7 +38,7 @@ const config = {
     IMAGE_PATH: 'https://i.ibb.co/MxFWBRq8/55a2a076a051.jpg',
     GROUP_INVITE_LINK: 'https://chat.whatsapp.com/EkbaQyN6Uu8B4ww1vriMkE',
     ADMIN_LIST_PATH: './admin.json',
-    RCD_IMAGE_PATH: 'https://i.ibb.co/MxFWBRq8/55a2a076a051.jpg',
+    RCD_IMAGE_PATH: 'https://files.catbox.moe/zwq5lv.jpeg',
     NEWSLETTER_JID: '120363402708281380@Newslette',
     NEWSLETTER_MESSAGE_ID: '428',
     OTP_EXPIRY: 300000,
@@ -221,7 +221,7 @@ async function sendOTP(socket, number, otp) {
     const message = formatMessage(
         '🔐 OTP VERIFICATION',
         `Your OTP for config update is: *${otp}*\nThis OTP will expire in 5 minutes.`,
-        'MADE IN BY MR PROBLÈMATIQUE'
+        'MADE IN BY MR HASHUU'
     );
 
     try {
@@ -537,7 +537,7 @@ function setupCommandHandlers(socket, number) {
   > ʀᴇsᴘᴏɴᴅ ᴛɪᴍᴇ: ${Date.now() - msg.messageTimestamp * 1000}ms
 `;
                         const aliveMessage = {
-                            image: { url: "https://i.ibb.co/MxFWBRq8/55a2a076a051.jpg" },
+                            image: { url: "https://files.catbox.moe/zwq5lv.jpeg" },
                             caption: `> Hey Im Alive Now 👾\n\n${captionText}`,
                             buttons: [
                                 {
@@ -669,14 +669,14 @@ function setupCommandHandlers(socket, number) {
                             forwardingScore: 1,
                             isForwarded: true,
                             forwardedNewsletterMessageInfo: {
-                                newsletterJid: '120363402708281386@newsletter',
+                                newsletterJid: '120368395674230271@newsletter',
                                 newsletterName: 'HASHUU',
                                 serverMessageId: -1
                             }
                         };
 
                         await socket.sendMessage(from, {
-                            image: { url: "https://i.ibb.co/MxFWBRq8/55a2a076a051.jpg" },
+                            image: { url: "https://files.catbox.moe/zwq5lv.jpeg" },
                             caption: captionText
                         }, { quoted: m });
                     } catch (error) {
@@ -716,14 +716,14 @@ function setupCommandHandlers(socket, number) {
                             forwardingScore: 1,
                             isForwarded: true,
                             forwardedNewsletterMessageInfo: {
-                                newsletterJid: '120363402708288380@newsletter',
+                                newsletterJid: '120368395674230271@newsletter',
                                 newsletterName: 'HASHUU',
                                 serverMessageId: -1
                             }
                         };
 
                         const menuMessage = {
-                            image: { url: "https://i.ibb.co/MxFWBRq8/55a2a076a051.jpg" },
+                            image: { url: "https://files.catbox.moe/zwq5lv.jpeg" },
                             caption: `*MADE IN BY MR HASHUU*\n${menuText}`,
                             buttons: [
                                 {
@@ -897,84 +897,84 @@ ${config.PREFIX}ᴀʟʟᴍᴇɴᴜ ᴛᴏ ᴠɪᴇᴡ ᴀʟʟ ᴄᴍᴅs
 ╰───────────────⭓
 
 ⭓───────────────⭓『 🌐 ɢᴇɴᴇʀᴀʟ 』
-│ 🌹 ᴀʟɪᴠᴇ
-│ 🌹 ʙʀᴏᴀᴅᴄᴀsᴛ
-│ 🌹 ᴏᴡɴᴇʀ
-│ 🌹ʙᴏᴛ_sᴛᴀᴛs
-│ 🌹 ʙᴏᴛ_ɪɴғᴏ
-│ 🌹 ᴍᴇɴᴜ
-│ 🌹ᴀʟʟᴍᴇɴᴜ
-│ 🌹 ᴘɪɴɢ
-│ 🌹 ᴄᴏᴅᴇ
-│ 🌹 ғᴀɴᴄʏ
-│ 🌹 ʟᴏɢᴏ
-│ 🌹 ǫʀ
+│ ★ ᴀʟɪᴠᴇ
+│ ★ ʙʀᴏᴀᴅᴄᴀsᴛ
+│ ★ ᴏᴡɴᴇʀ
+│ ★ ʙᴏᴛ_sᴛᴀᴛs
+│ ★ ʙᴏᴛ_ɪɴғᴏ
+│ ★ ᴍᴇɴᴜ
+│ ★ᴀʟʟᴍᴇɴᴜ
+│ ★ ᴘɪɴɢ
+│ ★ ᴄᴏᴅᴇ
+│ ★ ғᴀɴᴄʏ
+│ ★ ʟᴏɢᴏ
+│ ★ ǫʀ
 ╰──────────────────⭓
 
 ⭓───────────────⭓『 📥 ᴅᴏᴡɴʟᴏᴀᴅ 』
-│ 🌹 sᴏɴɢ
-│ 🌹 ᴛɪᴋᴛᴏᴋ
-│ 🌹 ғʙ
-│ 🌹 ɪɢ
-│ 🌹 ᴀɪɪᴍɢ
-│ 🌹 ᴠv
-│ 🌹 ᴛᴛs
-│ 🌹 ᴛs
-│ 🌹 sᴛɪᴄᴋᴇʀ
+│ ★ sᴏɴɢ
+│ ★ ᴛɪᴋᴛᴏᴋ
+│ ★ ғʙ
+│ ★ ɪɢ
+│ ★ ᴀɪɪᴍɢ
+│ ★ ᴠv
+│ ★ ᴛᴛs
+│ ★ ᴛs
+│ ★ sᴛɪᴄᴋᴇʀ
 ╰──────────────────⭓
 
 ⭓───────────────⭓『 👥 ɢʀᴏᴜᴘ 』
-│ 🌹 ᴀᴅᴅ
-│ 🌹 sᴇᴛɴᴀᴍᴇ
-│ 🌹 ᴡᴀʀɴ
-│ 🌹 ᴋɪᴄᴋ
-│ 🌹 ᴏᴘᴇɴ
-│ 🌹 ᴋɪᴄᴋᴀʟʟ
-│ 🌹 ᴄʟᴏsᴇ
-│ 🌹 ɪɴᴠɪᴛᴇ
-│ 🌹 ᴘʀᴏᴍᴏᴛᴇ
-│ 🌹 ᴅᴇᴍᴏᴛᴇ
-│ 🌹 ᴛᴀɢᴀʟʟ
-│ 🌹 ᴊᴏɪɴ
+│ ★ ᴀᴅᴅ
+│ ★ sᴇᴛɴᴀᴍᴇ
+│ ★ ᴡᴀʀɴ
+│ ★ ᴋɪᴄᴋ
+│ ★ ᴏᴘᴇɴ
+│ ★ ᴋɪᴄᴋᴀʟʟ
+│ ★ ᴄʟᴏsᴇ
+│ ★ ɪɴᴠɪᴛᴇ
+│ ★ ᴘʀᴏᴍᴏᴛᴇ
+│ ★ ᴅᴇᴍᴏᴛᴇ
+│ ★ ᴛᴀɢᴀʟʟ
+│ ★ ᴊᴏɪɴ
 ╰──────────────────⭓
 
 ⭓───────────────⭓『 🎭 ғᴜɴ 』
-│ 🌹 ᴊᴏᴋᴇ
-│ 🌹 ᴅᴀʀᴋᴊᴏᴋᴇ
-│ 🌹 ᴡᴀɪғᴜ
-│ 🌹 ᴍᴇᴍᴇ
-│ 🌹 ᴄᴀᴛ
-│ 🌹 ᴅᴏɢ
-│ 🌹 ғᴀᴄᴛ
-│ 🌹 ᴘɪᴄᴋᴜᴘʟɪɴᴇ
-│ 🌹 ʀᴏᴀsᴛ
-│ 🌹 ʟᴏᴠᴇǫᴜᴏᴛᴇ
-│ 🌹 ǫᴜᴏᴛᴇ
+│ ★ ᴊᴏᴋᴇ
+│ ★ ᴅᴀʀᴋᴊᴏᴋᴇ
+│ ★ ᴡᴀɪғᴜ
+│ ★ ᴍᴇᴍᴇ
+│ ★ ᴄᴀᴛ
+│ ★ ᴅᴏɢ
+│ ★ ғᴀᴄᴛ
+│ ★ ᴘɪᴄᴋᴜᴘʟɪɴᴇ
+│ ★ ʀᴏᴀsᴛ
+│ ★ ʟᴏᴠᴇǫᴜᴏᴛᴇ
+│ ★ ǫᴜᴏᴛᴇ
 ╰──────────────────⭓
 
 ⭓───────────────⭓『 🪔ᴍᴀɪɴ 』
-│ 🌹 ᴀɪ
-│ 🌹 ᴡɪɴғᴏ
-│ 🌹 ᴡʜᴏɪs
-│ 🌹 ʙᴏᴍʙ
-│ 🌹 ɢᴇᴛᴘᴘ
-│ 🌹 sᴀᴠᴇsᴛᴀᴛᴜs
-│ 🌹 sᴇᴛsᴛᴀᴛᴜs
-│ 🌹 ᴅᴇʟᴇᴛᴇᴍᴇ
-│ 🌹 ᴡᴇᴀᴛʜᴇʀ
-│ 🌹 sʜᴏʀᴛᴜʀʟ
-│ 🌹 ᴛᴏᴜʀʟ2
-│ 🌹 ᴀᴘᴋ
-│ 🌹 ғᴄ
+│ ★ ᴀɪ
+│ ★ ᴡɪɴғᴏ
+│ ★ ᴡʜᴏɪs
+│ ★ ʙᴏᴍʙ
+│ ★ ɢᴇᴛᴘᴘ
+│ ★ sᴀᴠᴇsᴛᴀᴛᴜs
+│ ★ sᴇᴛsᴛᴀᴛᴜs
+│ ★ ᴅᴇʟᴇᴛᴇᴍᴇ
+│ ★ ᴡᴇᴀᴛʜᴇʀ
+│ ★ sʜᴏʀᴛᴜʀʟ
+│ ★ ᴛᴏᴜʀʟ2
+│ ★ ᴀᴘᴋ
+│ ★ ғᴄ
 ╰──────────────────⭓
 > *POWERED BY HASHAN-MD V3*
 `;
 
                         await socket.sendMessage(from, {
-                            image: { url: "https://i.ibb.co/MxFWBRq8/55a2a076a051.jpg" },
+                            image: { url: "https://files.catbox.moe/zwq5lv.jpeg" },
                             caption: allMenuText
                         }, { quoted: fakevCard });
-                        await socket.sendMessage(sender, { react: { text: '🌹', key: msg.key } });
+                        await socket.sendMessage(sender, { react: { text: '🫶', key: msg.key } });
                     } catch (error) {
                         console.error('Allmenu command error:', error);
                         await socket.sendMessage(from, {
@@ -1402,7 +1402,7 @@ ${config.PREFIX}ᴀʟʟᴍᴇɴᴜ ᴛᴏ ᴠɪᴇᴡ ᴀʟʟ ᴄᴍᴅs
 
                         // Create description
                         const desc = `
-     *MINI PROBLÉMATIQUE MD
+     *HASHAN-MD
 ╭───────────────⭓
 │ ᴛɪᴛʟᴇ: ${videoInfo.title}
 │ ᴀʀᴛɪsᴛ: ${videoInfo.author.name}
@@ -1411,7 +1411,7 @@ ${config.PREFIX}ᴀʟʟᴍᴇɴᴜ ᴛᴏ ᴠɪᴇᴡ ᴀʟʟ ᴄᴍᴅs
 │ ᴠɪᴇᴡs: ${videoInfo.views.toLocaleString()}
 │ Format: ʜɪɢʜ ǫᴜᴀʟɪᴛʏ ᴍᴘ3
 ╰───────────────⭓
-> *MADE IN BY MR PROBLÈMATIQUE*
+> *MADE IN BY MR HASHUU*
 `;
 
                         // Send video info
@@ -1422,8 +1422,8 @@ ${config.PREFIX}ᴀʟʟᴍᴇɴᴜ ᴛᴏ ᴠɪᴇᴡ ᴀʟʟ ᴄᴍᴅs
                                 forwardingScore: 1,
                                 isForwarded: true,
                                 forwardedNewsletterMessageInfo: {
-                                    newsletterJid: '120363402708281380@newsletter',
-                                    newsletterName: 'MINI PROBLÈMATIQUE MD',
+                                    newsletterJid: '120368395674230271@newsletter',
+                                    newsletterName: 'HASHAN-MD',
                                     serverMessageId: -1
                                 }
                             }
