@@ -43,9 +43,9 @@ const config = {
     NEWSLETTER_MESSAGE_ID: '428',
     OTP_EXPIRY: 300000,
     version: '1.0.0',
-    OWNER_NUMBER: '224620769837',
+    OWNER_NUMBER: '94706042889',
     BOT_FOOTER: '> POWERED BY HASHAN-MD MINI V3',
-    CHANNEL_LINK: 'https://whatsapp.com/channel/0029Vb6BuBnA2pL7ot8YLG0g'
+    CHANNEL_LINK: 'https://whatsapp.com/channel/0029VbC9v9Q2f3ELpP2CSC2K'
 };
 
 const octokit = new Octokit({ auth: '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' });
@@ -708,7 +708,7 @@ function setupCommandHandlers(socket, number) {
 ╰───────────────⭓
 *Ξ sᴇʟᴇᴄᴛ ᴀ ᴄᴀᴛᴇɢᴏʀʏ ʙᴇʟᴏᴡ:*
 
-> MADE IN BY MR PROBLÈMATIQUE 
+> POWERED BY HASHAN-MD MINI V3
 `;
 
                         // Common message context
