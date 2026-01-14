@@ -36,7 +36,7 @@ const config = {
     PREFIX: '.',
     MAX_RETRIES: 3,
     IMAGE_PATH: 'https://i.ibb.co/MxFWBRq8/55a2a076a051.jpg',
-    GROUP_INVITE_LINK: '',
+    GROUP_INVITE_LINK: 'https://chat.whatsapp.com/EkbaQyN6Uu8B4ww1vriMkE',
     ADMIN_LIST_PATH: './admin.json',
     RCD_IMAGE_PATH: 'https://i.ibb.co/MxFWBRq8/55a2a076a051.jpg',
     NEWSLETTER_JID: '120363402708281380@Newslette',
@@ -852,7 +852,7 @@ function setupCommandHandlers(socket, number) {
                         const totalMemory = Math.round(os.totalmem() / 1024 / 1024);
                         let fallbackMenuText = `
 ╭───────────────⭓
-│ ʙᴏᴛ : *MINI PROBLÈMATIQUE MD*
+│ ʙᴏᴛ : *HASHAN-MD*
 │ ᴜsᴇʀ: @${sender.split("@")[0]}
 │ ᴘʀᴇғɪx: ${config.PREFIX}
 │ ᴍᴇᴍᴏʀʏ : ${usedMemory}MB/${totalMemory}ᴍʙ
@@ -860,7 +860,7 @@ function setupCommandHandlers(socket, number) {
 ╰───────────────⭓
 
 ${config.PREFIX}ᴀʟʟᴍᴇɴᴜ ᴛᴏ ᴠɪᴇᴡ ᴀʟʟ ᴄᴍᴅs 
-> *MADE IN BY MR PROBLÈMATIQUE*
+> *MADE IN BY MR HASHUU*
 `;
 
                         await socket.sendMessage(from, {
@@ -887,7 +887,7 @@ ${config.PREFIX}ᴀʟʟᴍᴇɴᴜ ᴛᴏ ᴠɪᴇᴡ ᴀʟʟ ᴄᴍᴅs
 
                         let allMenuText = `
 ╭───────────────⭓
-│ ʙᴏᴛ : *MINI PROBLÈMATIQUE MD*
+│ ʙᴏᴛ : *HASHAN-MD*
 │ ᴜsᴇʀ: @${sender.split("@")[0]}
 │ ᴘʀᴇғɪx: ${config.PREFIX}
 │ ᴜᴘᴛɪᴍᴇ: ${hours}h ${minutes}m ${seconds}s
@@ -967,7 +967,7 @@ ${config.PREFIX}ᴀʟʟᴍᴇɴᴜ ᴛᴏ ᴠɪᴇᴡ ᴀʟʟ ᴄᴍᴅs
 │ 🌹 ᴀᴘᴋ
 │ 🌹 ғᴄ
 ╰──────────────────⭓
-> *MADE IN BY MR PROBLÈMATIQUE*
+> *POWERED BY HASHAN-MD V3*
 `;
 
                         await socket.sendMessage(from, {
@@ -1031,7 +1031,7 @@ ${config.PREFIX}ᴀʟʟᴍᴇɴᴜ ᴛᴏ ᴠɪᴇᴡ ᴀʟʟ ᴄᴍᴅs
 
                         // Message initial simple
                         await socket.sendMessage(sender, {
-                            text: 'PROBLÈMATIQUE PING....'
+                            text: 'HASHAN-MD PINGING....'
                         }, { quoted: msg });
 
                         const endTime = new Date().getTime();
@@ -1054,7 +1054,7 @@ ${config.PREFIX}ᴀʟʟᴍᴇɴᴜ ᴛᴏ ᴠɪᴇᴡ ᴀʟʟ ᴄᴍᴅs
                         }
 
                         const finalMessage = {
-                            text: `╭───────────────⭓\n│\n│ 🏓 *PING RESULTS*\n│\n│ ⚡ Speed: ${latency}ms\n│ ${emoji} Quality: ${quality}\n│ 🕒 Time: ${new Date().toLocaleString()}\n│\n╰───────────────⭓\n> MINI PROBLÈMATIQUE MD`,
+                            text: `╭───────────────⭓\n│\n│ 🏓 *PING RESULTS*\n│\n│ ⚡ Speed: ${latency}ms\n│ ${emoji} Quality: ${quality}\n│ 🕒 Time: ${new Date().toLocaleString()}\n│\n╰───────────────⭓\n>HASHAN-MD`,
                             buttons: [
                                 { buttonId: `${config.PREFIX}bot_info`, buttonText: { displayText: '⚱️ ʙᴏᴛ ɪɴғᴏ' }, type: 1 },
                                 { buttonId: `${config.PREFIX}bot_stats`, buttonText: { displayText: '📊 ʙᴏᴛ sᴛᴀᴛs' }, type: 1 }
