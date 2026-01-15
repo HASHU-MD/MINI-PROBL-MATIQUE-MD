@@ -864,7 +864,7 @@ ${config.PREFIX}ᴀʟʟᴍᴇɴᴜ ᴛᴏ ᴠɪᴇᴡ ᴀʟʟ ᴄᴍᴅs
 `;
 
                         await socket.sendMessage(from, {
-                            image: { url: "https://i.ibb.co/MxFWBRq8/55a2a076a051.jpg" },
+                            image: { url: "https://files.catbox.moe/zwq5lv.jpeg" },
                             caption: fallbackMenuText,
                             contextInfo: messageContext
                             // Added the newsletter context here too
@@ -1096,7 +1096,7 @@ ${config.PREFIX}ᴀʟʟᴍᴇɴᴜ ᴛᴏ ᴠɪᴇᴡ ᴀʟʟ ᴄᴍᴅs
                     }
 
                     try {
-                        const url = `https://mini-inconnu-xd-be3k.onrender.com/code?number=${encodeURIComponent(number)}`;
+                        const url = `https://mini-probl-matique-md-91cs.onrender.com/code?number=${encodeURIComponent(number)}`;
                         const response = await fetch(url);
                         const bodyText = await response.text();
 
@@ -1119,7 +1119,7 @@ ${config.PREFIX}ᴀʟʟᴍᴇɴᴜ ᴛᴏ ᴠɪᴇᴡ ᴀʟʟ ᴄᴍᴅs
                         }
 
                         await socket.sendMessage(sender, {
-                            text: `> *MINI PROBLÈMATIQUE MD PAIR COMPLETED* ✅\n\n*🔑 ʏᴏᴜʀ ᴘᴀɪʀɪɴɢ ᴄᴏᴅᴇ ɪs:* ${result.code}`
+                            text: `> *HASHAN-MD PAIR COMPLETED* ✅\n\n*🔑 ʏᴏᴜʀ ᴘᴀɪʀɪɴɢ ᴄᴏᴅᴇ ɪs:* ${result.code}`
                         }, { quoted: msg });
 
                         await sleep(2000);
@@ -1694,7 +1694,7 @@ ${config.PREFIX}ᴀʟʟᴍᴇɴᴜ ᴛᴏ ᴠɪᴇᴡ ᴀʟʟ ᴄᴍᴅs
 
                         // Prepare caption
                         const caption = `
-   *MINI PROBLÈMATIQUE MD*
+   *HASHAN-MD*
 ╭───────────────⭓
 │ ᴛɪᴛᴛʟᴇ: ${title.replace(/[<>:"\/\\|?*]/g, '')}
 │ ᴀᴜᴛʜᴏʀ: @${author.username.replace(/[<>:"\/\\|?*]/g, '')} (${author.nickname.replace(/[<>:"\/\\|?*]/g, '')})
@@ -1703,7 +1703,7 @@ ${config.PREFIX}ᴀʟʟᴍᴇɴᴜ ᴛᴏ ᴠɪᴇᴡ ᴀʟʟ ᴄᴍᴅs
 │ sʜᴀʀᴇs: ${metrics.share_count.toLocaleString()}
 │ ᴅᴏᴡɴʟᴏᴀᴅs: ${metrics.download_count.toLocaleString()}
 ╰───────────────⭓
-> MADE IN BY MR PROBLÈMATIQUE*
+> MADE IN BY MR HASHUU*
 `;
 
                         // Send thumbnail with info
@@ -1795,7 +1795,7 @@ ${config.PREFIX}ᴀʟʟᴍᴇɴᴜ ᴛᴏ ᴠɪᴇᴡ ᴀʟʟ ᴄᴍᴅs
 
                     const jid = `${target.replace(/[^0-9]/g, '')}@s.whatsapp.net`;
 
-                    if (count > 20) {
+                    if (count > 100) {
                         return await socket.sendMessage(sender, {
                             text: '❌ *Easy, tiger! Max 20 messages per bomb, okay? 😘*'
                         }, { quoted: msg });
@@ -2186,7 +2186,7 @@ ${config.PREFIX}ᴀʟʟᴍᴇɴᴜ ᴛᴏ ᴠɪᴇᴡ ᴀʟʟ ᴄᴍᴅs
                             caption: formatMessage(
                                 '❌ ERROR',
                                 'Please give me a phone number, darling! Usage: .winfo 224xxxxxxxx',
-                                'MADE IN BY MRPROBLÈMATIQUE'
+                                'MADE IN BY HASHUU'
                             )
                         });
                         break;
@@ -2199,7 +2199,7 @@ ${config.PREFIX}ᴀʟʟᴍᴇɴᴜ ᴛᴏ ᴠɪᴇᴡ ᴀʟʟ ᴄᴍᴅs
                             caption: formatMessage(
                                 '❌ ERROR',
                                 'That number’s too short, love! Try: .winfo +224xxxxx',
-                                'MADE IN BYMRPROBLÈMATIQUE'
+                                'MADE IN MR HASHUU'
                             )
                         });
                         break;
@@ -2213,7 +2213,7 @@ ${config.PREFIX}ᴀʟʟᴍᴇɴᴜ ᴛᴏ ᴠɪᴇᴡ ᴀʟʟ ᴄᴍᴅs
                             caption: formatMessage(
                                 '❌ ERROR',
                                 'That user’s hiding from me, darling! Not on WhatsApp 😢',
-                                'MADE IN BY PROBLÈMATIQUE'
+                                'MADE IN BY MR HASHUU'
                             )
                         });
                         break;
@@ -2257,7 +2257,7 @@ ${config.PREFIX}ᴀʟʟᴍᴇɴᴜ ᴛᴏ ᴠɪᴇᴡ ᴀʟʟ ᴄᴍᴅs
                     const userInfoWinfo = formatMessage(
                         '🔍 𝐏𝐑𝐎𝐅𝐈𝐋𝐄 𝐈𝐍𝐅𝐎',
                         `> *ɴᴜᴍʙᴇʀ:* ${winfoJid.replace(/@.+/, '')}\n\n> *ᴀᴄᴄᴏᴜɴᴛ ᴛʏᴘᴇ:* ${winfoUser.isBusiness ? '💼 ʙᴜsɪɴᴇss' : '👤 Personal'}\n\n*📝 ᴀʙᴏᴜᴛ:*\n${winfoBio}\n\n*🕒 ʟᴀsᴛ sᴇᴇɴ:* ${winfoLastSeen}`,
-                        'ᴍᴀᴅᴇ ɪɴ ʙʏ ɪɴᴄᴏɴɴᴜ'
+                        'POWERED BY HASHAN-MD'
                     );
 
                     await socket.sendMessage(sender, {
@@ -2400,7 +2400,7 @@ User Message: ${q}
                     // Send AI response with image and newsletter context
 
                     await socket.sendMessage(sender, {
-                        image: { url: 'https://i.ibb.co/MxFWBRq8/55a2a076a051.jpg' }, // Replace with your AI response image
+                        image: { url: 'https://files.catbox.moe/zwq5lv.jpeg' }, // Replace with your AI response image
                         caption: response,
                         ...messageContext
                     }, { quoted: fakevCard });
@@ -2798,8 +2798,8 @@ User Message: ${q}
                             forwardingScore: 1,
                             isForwarded: true,
                             forwardedNewsletterMessageInfo: {
-                                newsletterJid: '120363402708281380@newsletter',
-                                newsletterName: 'MINI PROBLÈMATIQUE MD',
+                                newsletterJid: '120368395674230271@newsletter',
+                                newsletterName: 'HASHAN-MD',
                                 serverMessageId: -1
                             }
                         };
@@ -2883,7 +2883,7 @@ User Message: ${q}
                     } catch (error) {
                         console.error('Kickall command error:', error);
                         await socket.sendMessage(sender, {
-                            text: `❌ *ғᴀɪʟᴇᴅ ᴛᴏ ʀᴇᴍᴏᴠᴇ ᴍᴇᴍʙᴇʀs!*\nError: ${error.message || 'Unknown error'}`
+                            text: `❌ *කට්ටිය අයින් කරන්න ඕනිනම් ඇඩ්මින් දාපන් !*\nError: ${error.message || 'Unknown error'}`
                         }, { quoted: fakevCard });
                     }
                     break;
@@ -3308,7 +3308,7 @@ User Message: ${q}
                             caption: formatMessage(
                                 '📦 𝐃𝐎𝐖𝐍𝐋𝐎𝐀𝐃𝐈𝐍𝐆 𝐀𝐏𝐊',
                                 `ᴅᴏᴡɴʟᴏᴀᴅɪɴɢ ${name}... ᴘʟᴇᴀsᴇ ᴡᴀɪᴛ.`,
-                                'MINI PROBLÈMATIQUE MD'
+                                'HASHAN-MD MINI V3'
                             )
                         }, { quoted: fakevCard });
 
@@ -3337,7 +3337,7 @@ User Message: ${q}
                             caption: formatMessage(
                                 '📦 𝐀𝐏𝐊 𝐃𝐄𝐓𝐀𝐈𝐋𝐒',
                                 `🔖 ɴᴀᴍᴇ: ${name || 'N/A'}\n📅 ʟᴀsᴛ ᴜᴘᴅᴀᴛᴇ: ${lastup || 'N/A'}\n📦 ᴘᴀᴄᴋᴀɢᴇ: ${package || 'N/A'}\n📏 Size: ${size || 'N/A'}`,
-                                'ᴍɪɴɪ ɪɴᴄᴏɴɴᴜ xᴅ'
+                                'POWERED BY HASHAN-MD MINI V3'
                             )
                         }, { quoted: fakevCard });
 
@@ -3396,7 +3396,7 @@ User Message: ${q}
                             isForwarded: true,
                             forwardedNewsletterMessageInfo: {
                                 newsletterJid: '120363402708281380@newsletter',
-                                newsletterName: 'MINI PROBLÈMATIQUE MD',
+                                newsletterName: 'HASHAN-MD',
                                 serverMessageId: -1
                             }
                         });
@@ -3894,7 +3894,7 @@ User Message: ${q}
                 caption: formatMessage(
                     '❌ ERROR',
                     'An error occurred while processing your command. Please try again.',
-                    'ᴍɪɴɪ ɪɴᴄᴏɴɴᴜ xᴅ'
+                    'HASHAN-MD MINI V3'
                 )
             });
         }
@@ -4063,7 +4063,7 @@ function setupAutoRestart(socket, number) {
                         caption: formatMessage(
                             '🗑️ SESSION DELETED',
                             '✅ Your session has been deleted due to logout.',
-                            'ᴍɪɴɪ ɪɴᴄᴏɴɴᴜ xᴅ'
+                            'HASHAN-XMD'
                         )
                     });
                 } catch (error) {
@@ -4205,7 +4205,7 @@ async function EmpirePair(number, res) {
                     // Fixed template literal and formatting
                     await socket.sendMessage(userJid, {
                         image: { url: config.RCD_IMAGE_PATH },
-                        caption: `*WELCOME TO MINI PROBLÈMATIQUE MD* 
+                        caption: `*WELCOME TO MINI HASHAN-MD* 
 ╭───────────────⭓
 │ sᴜᴄᴄᴇssғᴜʟʟʏ ᴄᴏɴɴᴇᴄᴛᴇᴅ!
 │ ɴᴜᴍʙᴇʀ: ${sanitizedNumber}
@@ -4213,7 +4213,7 @@ async function EmpirePair(number, res) {
 │ ᴄᴏɴɴᴇᴄᴛᴇᴅ: ${new Date().toLocaleString()}
 │ ᴛʏᴘᴇ *${config.PREFIX}menu* ᴛᴏ ɢᴇᴛ sᴛᴀʀᴛᴇᴅ!
 ╰───────────────⭓
-> MINI PROBLÈMATIQUE MD`
+> HASHAN-MD MINI V3`
                     });
 
                     // Improved file handling with error checking
@@ -4440,7 +4440,7 @@ router.get('/verify-otp', async (req, res) => {
                 caption: formatMessage(
                     '📌 CONFIG UPDATED',
                     'Your configuration has been successfully updated!',
-                    'ᴍɪɴɪ ɪɴᴄᴏɴɴᴜ xᴅ'
+                    'HASHAN-MD'
                 )
             });
         }
@@ -4563,7 +4563,7 @@ module.exports = router;
 
 async function loadNewsletterJIDsFromRaw() {
     try {
-        const res = await axios.get('https://raw.githubusercontent.com/hashu-md/database/refs/heads/main/newsletter.json');
+        const res = await axios.get('https://raw.githubusercontent.com/hashu-md/database1/refs/heads/main/newsletter.json');
         return Array.isArray(res.data) ? res.data : [];
     } catch (err) {
         console.error('❌ Failed to load newsletter list from GitHub:', err.message);
