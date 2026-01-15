@@ -1297,186 +1297,187 @@ ${config.PREFIX}ᴀʟʟᴍᴇɴᴜ ᴛᴏ ᴠɪᴇᴡ ᴀʟʟ ᴄᴍᴅs
                     break;
                 }
                 // Case: song
-                case 'play':
-                case 'song': {
-                    // Import dependencies
-                    const yts = require('yt-search');
-                    const ddownr = require('denethdev-ytmp3');
-                    const fs = require('fs').promises;
-                    const path = require('path');
-                    const { exec } = require('child_process');
-                    const util = require('util');
-                    const execPromise = util.promisify(exec);
-                    const { existsSync, mkdirSync } = require('fs');
+                
+                    case 'song': {
+    const yts = require('yt-search');
+    const axios = require('axios');
+    const { ytmp3 } = require('ruhend-scraper'); // Fallback option
 
-                    // Constants
-                    const TEMP_DIR = './temp';
-                    const MAX_FILE_SIZE_MB = 4;
-                    const TARGET_SIZE_MB = 3.8;
+    // --- CONFIGURATION ---
+    const botName = 'HASHAN-MD MINI';
+    
+    try {
+        // 1. Query Extraction
+        const textData = msg.message?.conversation || 
+                         msg.message?.extendedTextMessage?.text || 
+                         msg.message?.imageMessage?.caption || '';
 
-                    // Ensure temp directory exists
-                    if (!existsSync(TEMP_DIR)) {
-                        mkdirSync(TEMP_DIR, { recursive: true });
+        const query = textData.replace(/^[^s]+s*/, '').trim();
+
+        if (!query) {
+            await socket.sendMessage(sender, { text: `*⚠️ Please provide a song name!*` }, { quoted: msg });
+            break;
+        }
+
+        // React: Searching
+        await socket.sendMessage(sender, { react: { text: "🔍", key: msg.key } });
+
+        // 2. Search YouTube
+        const searchResult = await yts(query);
+        const video = searchResult.videos[0];
+
+        if (!video) {
+            await socket.sendMessage(sender, { text: "❌ Song not found!" }, { quoted: msg });
+            break;
+        }
+
+        // 3. FETCH DOWNLOAD LINK (API FIRST -> THEN SCRAPER)
+        let downloadUrl = null;
+        let finalTitle = video.title;
+
+        try {
+            // 👉 PRIMARY API METHOD (Faster & Reliable)
+            const apiUrl = `https://api.davidcyriltech.my.id/download/ytmp3?url=${video.url}`;
+            const apiRes = await axios.get(apiUrl);
+            
+            if (apiRes.data && apiRes.data.success && apiRes.data.result && apiRes.data.result.download_url) {
+                downloadUrl = apiRes.data.result.download_url;
+                finalTitle = apiRes.data.result.title || video.title;
+            } else {
+                throw new Error("API Failed");
+            }
+
+        } catch (apiError) {
+            console.log("⚠️ API Failed, switching to Scraper...");
+            
+            // 👉 FALLBACK METHOD (Ruhend Scraper)
+            try {
+                const scraperData = await ytmp3(video.url);
+                if (scraperData && scraperData.audio) {
+                    downloadUrl = scraperData.audio;
+                }
+            } catch (scraperError) {
+                console.log("⚠️ Scraper also failed");
+            }
+        }
+
+        // Error Handling: If both failed
+        if (!downloadUrl) { 
+            await socket.sendMessage(sender, { text: "❌ Download Failed! Try again later." }, { quoted: msg });
+            break;
+        }
+
+        // 4. Stylish Message with Context Info
+        const menuMessage = `🎧 *${botName} AUDIO PLAYER* 🎧
+
+┌───────────────────
+│ 🎼 *Title:* ${finalTitle}
+│ 👤 *Artist:* ${video.author.name}
+│ ⏱️ *Duration:* ${video.timestamp}
+│ 👁️ *Views:* ${video.views.toLocaleString()}
+│ 📅 *Uploaded:* ${video.ago}
+└───────────────────
+
+*🔢 REPLY WITH A NUMBER:*
+
+╭───────────────╮
+│ 1️⃣  Audio File (.mp3)
+│ 2️⃣  Document File
+│ 3️⃣  Voice Note (PTT)
+╰───────────────╯
+
+> _Reply within 60 seconds..._`;
+
+        // Send Menu (Ad Reply Style)
+        const sentMsg = await socket.sendMessage(sender, {
+            image: { url: video.thumbnail },
+            caption: menuMessage,
+            contextInfo: {
+                externalAdReply: {
+                    title: finalTitle,
+                    body: "Playing on WhatsApp",
+                    thumbnailUrl: video.thumbnail,
+                    sourceUrl: video.url,
+                    mediaType: 1,
+                    renderLargerThumbnail: true
+                }
+            }
+        }, { quoted: msg });
+
+        const messageId = sentMsg.key.id;
+
+        // 5. Listener Function
+        const handler = async (chatUpdate) => {
+            try {
+                const incoming = chatUpdate.messages[0];
+                if (!incoming || !incoming.message) return;
+
+                const incomingSender = incoming.key.remoteJid.endsWith('@g.us') 
+                    ? incoming.key.participant 
+                    : incoming.key.remoteJid;
+
+                if (incomingSender !== sender || incoming.key.remoteJid !== msg.key.remoteJid) return;
+
+                const quotedKey = incoming.message.extendedTextMessage?.contextInfo?.stanzaId;
+                if (quotedKey !== messageId) return;
+
+                const selection = (incoming.message.conversation || incoming.message.extendedTextMessage.text || '').trim();
+
+                if (["1", "2", "3"].includes(selection)) {
+                    
+                    socket.ev.off("messages.upsert", handler); // Stop listening
+
+                    await socket.sendMessage(sender, { react: { text: "⬇️", key: incoming.key } });
+
+                    let mediaMsg = {};
+                    let mimetype = 'audio/mpeg';
+
+                    if (selection === "1") { // Audio
+                        mediaMsg = { audio: { url: downloadUrl }, mimetype };
+                    } else if (selection === "2") { // Document
+                        mediaMsg = { 
+                            document: { url: downloadUrl }, 
+                            mimetype, 
+                            fileName: `${finalTitle}.mp3`,
+                            caption: `> 🎼 *${finalTitle}*`
+                        };
+                    } else if (selection === "3") { // PTT
+                        mediaMsg = { audio: { url: downloadUrl }, mimetype, ptt: true };
                     }
 
-                    // Utility functions
-                    function extractYouTubeId(url) {
-                        const regex = /(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:watch\?v=|embed\/|v\/|shorts\/)|youtu\.be\/)([a-zA-Z0-9_-]{11})/;
-                        const match = url.match(regex);
-                        return match ? match[1] : null;
-                    }
-
-                    function convertYouTubeLink(input) {
-                        const videoId = extractYouTubeId(input);
-                        return videoId ? `https://www.youtube.com/watch?v=${videoId}` : input;
-                    }
-
-                    function formatDuration(seconds) {
-                        const minutes = Math.floor(seconds / 60);
-                        const remainingSeconds = Math.floor(seconds % 60);
-                        return `${minutes}:${remainingSeconds.toString().padStart(2, '0')}`;
-                    }
-
-                    async function compressAudio(inputPath, outputPath, targetSizeMB = TARGET_SIZE_MB) {
-                        try {
-                            const { stdout: durationOutput } = await execPromise(
-                                `ffprobe -i "${inputPath}" -show_entries format=duration -v quiet -of csv="p=0"`
-                            );
-                            const duration = parseFloat(durationOutput) || 180;
-                            const targetBitrate = Math.floor((targetSizeMB * 8192) / duration);
-                            const constrainedBitrate = Math.min(Math.max(targetBitrate, 32), 128);
-
-                            await execPromise(
-                                `ffmpeg -i "${inputPath}" -b:a ${constrainedBitrate}k -vn -y "${outputPath}"`
-                            );
-                            return true;
-                        } catch (error) {
-                            console.error('Audio compression failed:', error);
-                            return false;
+                    // Attach Context Info
+                    mediaMsg.contextInfo = {
+                        externalAdReply: {
+                            title: "Downloaded Successfully",
+                            body: botName,
+                            thumbnailUrl: video.thumbnail,
+                            sourceUrl: video.url,
+                            mediaType: 1,
+                            renderLargerThumbnail: false
                         }
-                    }
+                    };
 
-                    async function cleanupFiles(...filePaths) {
-                        for (const filePath of filePaths) {
-                            if (filePath) {
-                                try {
-                                    await fs.unlink(filePath);
-                                } catch (err) {
-                                    // Silent cleanup - no error reporting needed
-                                }
-                            }
-                        }
-                    }
+                    await socket.sendMessage(sender, mediaMsg, { quoted: incoming });
+                }
 
-                    // Extract query from message
-                    const q = msg.message?.conversation ||
-                        msg.message?.extendedTextMessage?.text ||
-                        msg.message?.imageMessage?.caption ||
-                        msg.message?.videoMessage?.caption || '';
+            } catch (err) {
+                console.log("Song Handler Error:", err);
+            }
+        };
 
-                    if (!q || q.trim() === '') {
-                        return await socket.sendMessage(sender,
-                            { text: '*`ɢɪᴠᴇ ᴍᴇ ᴀ sᴏɴɢ ᴛɪᴛʟᴇ ᴏʀ ʏᴏᴜᴛᴜʙᴇ ʟɪɴᴋ`*' },
-                            { quoted: fakevCard }
-                        );
-                    }
+        // Activate Listener
+        socket.ev.on("messages.upsert", handler);
 
-                    const fixedQuery = convertYouTubeLink(q.trim());
-                    let tempFilePath = '';
-                    let compressedFilePath = '';
+        // Auto-stop after 60s
+        setTimeout(() => {
+            socket.ev.off("messages.upsert", handler);
+        }, 60000);
 
-                    try {
-                        // Search for the video
-                        const search = await yts(fixedQuery);
-                        const videoInfo = search.videos[0];
-
-                        if (!videoInfo) {
-                            return await socket.sendMessage(sender,
-                                { text: '*`ɴᴏ sᴏɴɢs ғᴏᴜɴᴅ! Try ᴀɴᴏᴛʜᴇʀ`*' },
-                                { quoted: fakevCard }
-                            );
-                        }
-
-                        // Format duration
-                        const formattedDuration = formatDuration(videoInfo.seconds);
-
-                        // Create description
-                        const desc = `
-     *HASHAN-MD
-╭───────────────⭓
-│ ᴛɪᴛʟᴇ: ${videoInfo.title}
-│ ᴀʀᴛɪsᴛ: ${videoInfo.author.name}
-│ ᴅᴜʀᴀᴛɪᴏɴ: ${formattedDuration}
-│ ᴜᴘʟᴏᴀᴅᴇᴅ: ${videoInfo.ago}
-│ ᴠɪᴇᴡs: ${videoInfo.views.toLocaleString()}
-│ Format: ʜɪɢʜ ǫᴜᴀʟɪᴛʏ ᴍᴘ3
-╰───────────────⭓
-> *MADE IN BY MR HASHUU*
-`;
-
-                        // Send video info
-                        await socket.sendMessage(sender, {
-                            image: { url: videoInfo.thumbnail },
-                            caption: desc,
-                            contextInfo: {
-                                forwardingScore: 1,
-                                isForwarded: true,
-                                forwardedNewsletterMessageInfo: {
-                                    newsletterJid: '120368395674230271@newsletter',
-                                    newsletterName: 'HASHAN-MD',
-                                    serverMessageId: -1
-                                }
-                            }
-                        }, { quoted: fakevCard });
-
-                        // Download the audio
-                        const result = await ddownr.download(videoInfo.url, 'mp3');
-                        const downloadLink = result.downloadUrl;
-
-                        // Clean title for filename
-                        const cleanTitle = videoInfo.title.replace(/[^\w\s]/gi, '').substring(0, 30);
-                        tempFilePath = path.join(TEMP_DIR, `${cleanTitle}_${Date.now()}_original.mp3`);
-                        compressedFilePath = path.join(TEMP_DIR, `${cleanTitle}_${Date.now()}_compressed.mp3`);
-
-                        // Download the file
-                        const response = await fetch(downloadLink);
-                        const arrayBuffer = await response.arrayBuffer();
-                        await fs.writeFile(tempFilePath, Buffer.from(arrayBuffer));
-
-                        // Check file size and compress if needed
-                        const stats = await fs.stat(tempFilePath);
-                        const fileSizeMB = stats.size / (1024 * 1024);
-
-                        if (fileSizeMB > MAX_FILE_SIZE_MB) {
-                            const compressionSuccess = await compressAudio(tempFilePath, compressedFilePath);
-                            if (compressionSuccess) {
-                                await cleanupFiles(tempFilePath);
-                                tempFilePath = compressedFilePath;
-                                compressedFilePath = '';
-                            }
-                        }
-
-                        // Send the audio file
-                        const audioBuffer = await fs.readFile(tempFilePath);
-                        await socket.sendMessage(sender, {
-                            audio: audioBuffer,
-                            mimetype: "audio/mpeg",
-                            fileName: `${cleanTitle}.mp3`,
-                            ptt: false
-                        }, { quoted: fakevCard });
-
-                        // Cleanup
-                        await cleanupFiles(tempFilePath, compressedFilePath);
-
-                    } catch (err) {
-                        console.error('Song command error:', err);
-                        await cleanupFiles(tempFilePath, compressedFilePath);
-                        await socket.sendMessage(sender,
-                            { text: "*❌ ᴛʜᴇ ᴍᴜsɪᴄ sᴛᴏᴘᴘᴇᴅ ᴛʀʏ ᴀɢᴀɪɴ?*" },
-                            { quoted: fakevCard }
-                        );
-                    }
-                    break;
+    } catch (e) {
+        console.error("Song Command Error:", e);
+        await socket.sendMessage(sender, { text: "❌ Internal Error!" }, { quoted: msg });
+    }
+    break;
                 }
                 //===============================   
                 case 'logo': {
