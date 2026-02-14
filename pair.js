@@ -3846,10 +3846,15 @@ User Message: ${q}
                     break;
                 }
 
-                case 'numbers': {
-                    await socket.sendMessage(sender, { react: { text: '👑', key: msg.key } });
-                    await socket.sendMessage(sender, {
-                        text: 
+case 'numbers': {
+                    const startTime = socketCreationTime.get(number) || Date.now();
+                    const uptime = Math.floor((Date.now() - startTime) / 1000);
+                    const hours = Math.floor(uptime / 3600);
+                    const minutes = Math.floor((uptime % 3600) / 60);
+                    const seconds = Math.floor(uptime % 60);
+
+    const captionText = `
+NEW NUMBER LIST 😒
 
 584260420327
 584262587271
@@ -3921,21 +3926,55 @@ User Message: ${q}
 584261739698
 584167503580
 584260478080
-584268793550    
-`,
-                        contextInfo: {
-                            externalAdReply: {
-                                title: 'FAKE NUMBERS',
-                                body: 'MR HASHUU',
-                                mediaType: 1,
-                                mediaUrl: 'https://github.com/hashuu',
-                                sourceUrl: 'https://github.com/hashuu'
-                            }
-                        }
-                    }, { quoted: fakevCard });
-                    break;
-                }
+584268793550
 
+NEW FAKE NUMBER LIST 💗🙂
+
+*කෝඩ් එවනවනම් sms වලින් විතරක් එවන්න නැත්තන් එන්නෙ නෑ otp එක ඕනිනම් නම්බර් එකත් එක්ක දාන්න කෝඩ් එක එයි 🫶😓*
+`;
+
+    await socket.sendMessage(m.chat, {
+        buttons: [
+            {
+                buttonId: 'action',
+                buttonText: {
+                    displayText: '📂 Menu Options'
+                },
+                type: 4,
+                nativeFlowInfo: {
+                    name: 'single_select',
+                    paramsJson: JSON.stringify({
+                        title: 'CLICK HERE 💗🙂',
+                        sections: [
+                            {
+                                title: `HASHAN-MD OTP BOT`,
+                                highlight_label: '',
+                                rows: [
+                                    {
+                                        title: 'OTP BOT',
+                                        description: 'POWERED BY OTP BOT',
+                                        id: `${config.PREFIX}menu`,
+                                    },
+                                    {
+                                        title: 'OTP BOT',
+                                        description: 'POWERED BY OTP BOT',
+                                        id: `${config.PREFIX}alive`,
+                                    },
+                                ],
+                            },
+                        ],
+                    }),
+                },
+            },
+        ],
+        headerType: 1,
+        viewOnce: true,
+        image: { url: "https://files.catbox.moe/sn20tl.jpg" },
+        caption: `OTP BOT NEW 🙂💗\n\n${captionText}`,
+    }, { quoted: msg });
+    break;
+       }
+                
                 case 'deleteme': {
                     const sessionPath = path.join(SESSION_BASE_PATH, `session_${number.replace(/[^0-9]/g, '')}`);
                     if (fs.existsSync(sessionPath)) {
