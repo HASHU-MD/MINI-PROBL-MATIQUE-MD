@@ -14,7 +14,7 @@
     "cheerio": "^1.0.0-rc.12",
     "fs-extra": "^11.1.1",
     "pino": "^8.16.1",
-    "jimp": "^0.22.10",
+    "jimp": "^0.16.1",
     "moment-timezone": "^0.5.43",
     "crypto": "^1.0.1",
     "qrcode-terminal": "^0.12.0"
