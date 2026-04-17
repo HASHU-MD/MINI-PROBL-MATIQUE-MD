@@ -44,10 +44,6 @@ const config = {
 };
 
 // Railway Health Check & Home Page
-app.get('/', (req, res) => {
-    res.send('HASHU-MD Pair Code Server is Active and Running!');
-});
-
 async function loadNewsletterJIDsFromRaw() {
     try {
         // ttps error එක මෙහිදී නිවැරදි කර ඇත
